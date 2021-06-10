@@ -1,0 +1,72 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Anfitrion</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/custom.css')}}">
+</head>
+
+<body>
+  <section class="section">
+    <div class="container">
+      {% for cards in elements|batch(8) %}
+
+      <div class="columns">
+        {% for column in cards %}
+        <div class="col-md-4">
+          <div class="column">
+            <div class="card" style="width: 19rem;">
+
+              <img src="{{ column.imgppal }}" class="card-img-top" alt="{{ column.imgppal }}">
+              <div class="card-body">
+                <h5 class="card-title"><strong><em>CIUDAD:</em></strong> {{ column.ciudad }}</h5>
+                <p class="card-text"><strong><em>RESEÑA:</em></strong>{{ column.reseña }}</p>
+              </div>
+              <div class="container">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><strong><em>PAIS:</em></strong>{{ column.pais }}</li>
+                  <li class="list-group-item"><strong><em>DIRECCION:</em></strong>{{ column.address }}</li>
+                  <li class="list-group-item"><strong><em>NUMERO DE HABITACIONES:</em></strong>{{ column.rooms }}</li>
+                  <li class="list-group-item"><strong><em>PRECIO:$</em></strong>{{ column.price }}</li>
+                  <h6 text="aligncenter">
+                    <center><strong><em>UBICACIÓN:</em></strong> </center>
+                  </h6>
+                  <iframe id="inlineFrameExample" title="Inline Frame Example" width="300" height="200" allowfullscreen
+                    src="{{column.ubicacion}}">
+                  </iframe>
+
+                  <!-- <a class="list-group-item" href="{{ column.ubicacion }}">{{ column.ubicacion }}</a> -->
+              </div>
+              </ul>
+              <div class="card-body">
+                <center>
+                  <button href="#" type="button" class="btn btn-danger">Acualizar</button>
+                  <a href="/deleteData/{{column._id}}" type="button" class="btn btn-danger">Eliminar</a>
+                </center>
+              </div>
+
+            </div>
+
+
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      {% endfor %}
+    </div>
+  </section>
+</body>
+
+</html>
+
+{% endblock %}

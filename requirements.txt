@@ -1,0 +1,6 @@
+flask
+pymongo
+dnspython
+pymongo[srv]
+flask_login
+flask_mongoengine

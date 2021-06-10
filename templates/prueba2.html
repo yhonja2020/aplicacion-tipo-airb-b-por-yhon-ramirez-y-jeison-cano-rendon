@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+
+
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Ciudad</th>
+                <th scope="col">Direccion</th>
+                <th scope="col">Reservada</th>
+                <th scope="col">Contacto</th>
+                <th scope="col">Action</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in elements %}
+            <tr>
+                <th scope="row">{{ row._id }} </th>
+                <td>{{ row.ciudad }} </td>
+                <td>{{ row.address }} </td>
+                <td>{{ row.reservada }} </td>
+                <td>{{ row.hostid }} </td>
+                <td>
+                    <a href='/updateAP/{{row._id}}' class='badge bg-primary'> Edit </a> 
+                    <a href='/deleteData/{{row._id}}' class='badge bg-danger'> Delete </a>
+                </td>
+            </tr>
+            {% endfor %} 
+        </tbody>
+    
+    </table>
+
+
+
+
+    {% endblock %}

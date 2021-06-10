@@ -1,0 +1,106 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+
+<link rel="stylesheet" href="{{url_for('static', filename='css/styleslogin.css')}}">
+
+<div class="modal-dialog text-center">
+    <div class="col-sm-8 main-section">
+        <div class="modal-content">
+            <div class="col-12 user-img">
+                <img src="{{url_for('static', filename='img/registro.png')}}" alt="">
+            </div>
+
+            <h2 class="card-title text-center mb-4 mt-1">Sign in</h2>
+
+            <form class="col-12" action="{{url_for('record')}}" method="post" onsubmit="return validateformlrecord()">
+                <div class="form-group" id="name-record">
+                    <input type="text" class="form-control" id="recordname" name="nombre" placeholder="Nombre Compreto">
+                </div><br>
+                <div class="form-group" id="email-record">
+                    <input type="text" class="form-control" id="recordemail" name="email"
+                        placeholder="example@email.com">
+
+                </div><br>
+                <div class="form-group" id="country-record">
+                    <input type="text" class="form-control" id="recordcountry" name="pais" placeholder="Pais">
+                </div><br>
+                <div class="form-group" id="city-record">
+                    <input type="text" class="form-control" id="recordcity" name="ciudad" placeholder="Ciudad">
+
+                </div><br>
+                <div class="form-group" id="password-record">
+                    <input type="password" class="form-control" id="recordpassword" name="password"
+                        placeholder="Contraseña">
+
+                </div><br>
+
+                <div class="mb-3">
+                    <label for="disabledSelect" class="form-label" color="white">Seleccione un Rol</label>
+                    <select id="recordrol" class="form-select" name="rol">
+                        <option></option>
+                        <option>Anfitrion</option>
+                        <option>Invitado</option>
+                    </select>
+                </div>
+
+                <div class="col-auto">
+                    <!-- <button type="submit" class="btn btn-primary mb-3">Confirm identity</button> -->
+                    <!-- <button type="submit" class="btn btn-outline-danger">Ingresar</button> -->
+                    <button type="submit" class="btn btn-primary btn-lg">Ingresar</button>
+                </div>
+                <br>
+            </form>
+            <!-- sweetAlert2 -->
+
+            <!-- Generamos una nueva variable de messages con sweetalert2 -->
+            <!-- {% with messages = get_flashed_messages(with_categories=True) %} -->
+
+            <!-- {% for category, message in get_flashed_messages(with_categories=True) %}
+            <script>
+                Swal.fire({
+                    title: '{{message}}',
+                    showClass: {
+                        popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__fadeOutUp'
+                    }
+                })
+            </script>
+            {% endfor %} -->
+            <!-- {% endwith %} -->
+            {% with messages = get_flashed_messages(with_categories=True) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            {% if category == 'error' %}
+            <script>
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    text: "{{message}}",
+                    showConfirmButton: true,
+                    timer: 5000
+                })
+            </script>
+            {% else %}
+            <script>
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    text: "{{message}}",
+                    showConfirmButton: true,
+                    timer: 5000
+                })
+            </script>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %}

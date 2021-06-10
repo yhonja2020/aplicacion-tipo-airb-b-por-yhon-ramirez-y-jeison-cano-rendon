@@ -1,0 +1,70 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<link rel="stylesheet" href="{{url_for('static', filename='css/styleslogin.css')}}">
+
+<div class="modal-dialog text-center">
+    <div class="col-sm-8 main-section">
+        <div class="modal-content">
+            <div class="col-12 user-img">
+                <img src="{{url_for('static', filename='img/logo2.jpeg')}}" alt="">
+            </div>
+
+
+
+            <h2 class="card-title text-center mb-4 mt-1">Sign in</h4>
+
+
+
+                <form class="col-12" action="{{url_for('proyecto')}}" method="post"
+                    onsubmit="return validateformlogin()">
+                    <div class="form-group" id="login-group">
+                        <input type="text" class="form-control" id="loginemail" name="email"
+                            placeholder="name@example.com">
+                    </div><br>
+
+                    <div class="form-group" id="password-group">
+                        <input type="password" class="form-control" id="loginpassword" name="password"
+                            placeholder="Contraseña">
+
+
+                    </div><br>
+                    <div class="col-auto">
+                        <!-- <button type="submit" class="btn btn-primary mb-3">Confirm identity</button> -->
+                        <!-- <button type="submit" class="btn btn-outline-danger">Ingresar</button> -->
+                        <button type="submit" class="btn btn-primary btn-lg">Ingresar</button>
+                    </div>
+                    <br>
+                  
+                    <div id="register-link" class="text-right">
+                        <a href="/record" class="text-info">Register here</a>
+                    </div>
+                </form>
+
+
+        </div>
+        <!-- {% for category, message in get_flashed_messages(with_categories=True) %}
+        <div class="alert alert-{{category}}">Error: {{ message }}</div>
+        {% endfor %} -->
+
+         {% for category, message in get_flashed_messages(with_categories=True) %}
+        <!-- <div class="alert alert-{{category}} alert-dismissible" role="alert"> {{ message }}</div> -->
+        
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...1',
+                text: '{{message}}',
+                // footer: '<a href>Why do I have this issue?</a>'
+            })
+        </script>
+        {% endfor %}
+
+
+        
+    </div>
+
+</div>
+
+
+{% endblock %}

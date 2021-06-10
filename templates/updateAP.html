@@ -1,0 +1,78 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<link rel="stylesheet" href="{{url_for('static', filename='css/styleslogin.css')}}">
+
+<div class="modal-dialog text-center">
+    <div class="col-sm-8 main-section">
+        <div class="modal-content">
+            <div class="col-12 user-img">
+                <img src="{{url_for('static', filename='img/registro.png')}}" alt="">
+            </div>
+
+            <h2 class="card-title text-center mb-4 mt-1">Actualizar apartamento</h4>
+                {% for row in elements %}
+
+                <form class="col-12" action="{{url_for('updateAP', id=row._id)}}" method="post" onsubmit="return validateformlrecord()">
+                    <div class="form-group" id="city-record">
+                        <input type="text" class="form-control" id="recordcity" name="ciudad" placeholder="Ciudad" value="{{ row.ciudad }}">
+                    </div><br>
+                    <div class="form-group" id="country-record">
+                        <input type="text" class="form-control" id="recordcountry" name="pais" placeholder="Pais" value="{{ row.pais }}">
+
+                    </div><br>
+                    <div class="form-group" id="address-record">
+                        <input type="text" class="form-control" id="recordaddress" name="address" placeholder="Dirección" value="{{ row.address }}">
+                    </div><br>
+                    <div class="form-group" id="location-record">
+                        <input type="text" class="form-control" id="recordlocation" name="ubicacion" placeholder="Ubicación" value="{{ row.ubicacion }}">
+
+                    </div><br>
+                    <div class="form-group" id="rooms-record">
+                        <input type="number" class="form-control" id="recordrooms" name="rooms" placeholder="Numero de habitaciones" value="{{ row.rooms }}">
+
+                    </div><br>
+                    <div class="form-group" id="imgAp-record">
+                        <input type="link" class="form-control" id="recordimgAp" name="imgAp" placeholder="Imagenes del apartamento" value="{{ row.imgap }}">
+
+                    </div><br>
+                    <div class="form-group" id="imgppal-record">
+                        <input type="link" class="form-control" id="recordimgppal" name="imgppal" placeholder="Imagen Destacada" value="{{ row.imgppal }}">
+
+                    </div><br>
+                
+                    <div class="form-group" id="price-record">
+                        <input type="number" class="form-control" id="recordprice" name="price" placeholder="Valor Por Noche" value="{{ row.price }}">
+
+                    </div><br>
+            
+                    <div class="form-group" id="reseña-record">
+                        <input type="text" class="form-control" id="recordreseña" name="reseña" placeholder="Reseña del apartamento" value="{{ row.reseña }}">
+                    
+                    </div><br>
+                    <div class="form-group" id="reservado">
+                        <input type="text" class="form-control" id="reservado" name="reservado" placeholder="Estado de reserva" value="{{ row.reservada }}">
+
+                    </div><br>
+                    <div class="form-group" id="reservado">
+                        <input type="text" class="form-control" id="hostid" name="hostid" placeholder="Contacto" value="{{ row.hostid }}">
+
+                    </div><br>
+
+                    <div class="col-auto">
+                        <!-- <button type="submit" class="btn btn-primary mb-3">Confirm identity</button> -->
+                        <!-- <button type="submit" class="btn btn-outline-danger">Ingresar</button> -->
+                        <button type="submit" class="btn btn-primary btn-lg">Actualizar</button>
+                    </div><br>
+                </form>
+                {% endfor %}
+                {% for category, message in get_flashed_messages(with_categories=True) %}
+                <div class="alert alert-{{category}} alert-dismissible" role="alert">!!!!!!!!: {{ message }}</div>
+                {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

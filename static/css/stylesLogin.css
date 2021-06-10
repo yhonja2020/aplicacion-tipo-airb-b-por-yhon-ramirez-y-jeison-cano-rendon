@@ -1,0 +1,129 @@
+body{
+    background: url(../img/wallpaperinicio.jpg) no-repeat center center fixed;
+    background-size: cover;
+}
+.main-section{
+    margin: 0 auto;
+    margin-top: 15%;
+    padding: 0;
+}
+
+.modal-content{
+    background-color: #3b4652;
+    opacity:.80;
+    padding: 0 20px;
+    box-shadow: 0px 0px 5px #848484;
+}
+
+.user-img{
+    margin-top: -50px;
+    margin-bottom: 35px;
+}
+
+.user-img img{
+    width: 130px;
+    height: 130px;
+    box-shadow: 0px 0px 5px #848484;
+    border-radius: 80%;
+}
+
+.form-group input{
+    border-radius: 25px;
+    height: 42px;
+    font-size: 18px;
+    border: 0;
+    padding-left: 50px;
+}
+
+.form-select{
+    border-radius: 25px;
+    height: 42px;
+    font-size: 18px;
+    border: 0;
+    padding-left: 50px;
+}
+
+.form-select select{
+    border-radius: 25px;
+    
+}
+
+.form-group::before{
+    font-family: "font awesome\ 5 free";
+    position:absolute;
+    left: 28px;
+    font-size: 22px;
+    padding-top:4px ;
+}
+
+.form-group#login-group::before{
+    content: "\f2bb";
+
+}
+
+.form-group#password-group::before{
+    content: "\f2bb";
+
+}
+
+button{
+    width: 60%;
+    margin: 5px 0 25px;
+}
+
+label {
+    cursor: default;
+    color: white;
+        
+  }
+.card-title{
+    color: white;
+}
+
+
+.alert {
+    padding: 12px;
+    border-radius: 3px;
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+    border-width: 2px;
+    border-style: solid;
+  }
+  
+  .alert-error {
+    border-color: darkred;
+    background-color: red;
+    color: white;
+  }
+  
+  .alert-info {
+    border-color: orange;
+    background-color: yellow;
+    color: black;
+  }
+
+
+  .navbar.navbar-expand-lg.navbar-light li a{
+	color: white;
+	margin-bottom: 20px;
+    padding: 14px 16px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.navbar.navbar-expand-lg.navbar-light li a:hover {
+	color: white;
+	border-bottom: 3px solid white;
+}
+
+.background_img{
+	background-image: url("https://a0.muscache.com/4ea/air/r:w3100-h1200-sfit,e:fjpg-c80/pictures/318dae49-6efb-484c-b4d2-b3d84c2bcd4e.jpg");
+	background-repeat: no-repeat;
+	background-size: 100vw 100vh;
+	margin-top: 10px;
+	margin-bottom: 50px;
+	position: relative;
+}
+
+
+

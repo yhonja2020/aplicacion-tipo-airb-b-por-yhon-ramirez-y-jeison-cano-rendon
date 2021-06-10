@@ -1,0 +1,141 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<link rel="stylesheet" href="{{url_for('static', filename='css/stylesprueba.css')}}">
+
+<!-- <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="mask flex-center">
+          <div class="container">
+            <div class="row align-items-center">
+              <div class="col-md-7 col-12 order-md-1 order-2">
+                <h4>Present your <br>
+                  awesome product</h4>
+                <p>Lorem ipsum dolor sit amet. Reprehenderit, qui blanditiis quidem rerum <br>
+                  necessitatibus praesentium voluptatum deleniti atque corrupti.</p>
+                <a href="#">BUY NOW</a> </div>
+              <div class="col-md-5 col-12 order-md-2 order-1"><img src="{{url_for('static', filename='img/imagen1.jpg')}}" class="mx-auto" alt="slide"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="mask flex-center">
+          <div class="container">
+            <div class="row align-items-center">
+              <div class="col-md-7 col-12 order-md-1 order-2">
+                <h4>Present your <br>
+                  awesome product</h4>
+                <p>Lorem ipsum dolor sit amet. Reprehenderit, qui blanditiis quidem rerum <br>
+                  necessitatibus praesentium voluptatum deleniti atque corrupti.</p>
+                <a href="#">BUY NOW</a> </div>
+              <div class="col-md-5 col-12 order-md-2 order-1"><img src="https://i.imgur.com/duWgXRs.png" class="mx-auto" alt="slide"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="mask flex-center">
+          <div class="container">
+            <div class="row align-items-center">
+              <div class="col-md-7 col-12 order-md-1 order-2">
+                <h4>Present your <br>
+                  awesome product</h4>
+                <p>Lorem ipsum dolor sit amet. Reprehenderit, qui blanditiis quidem rerum <br>
+                  necessitatibus praesentium voluptatum deleniti atque corrupti.</p>
+                <a href="#">BUY NOW</a> </div>
+              <div class="col-md-5 col-12 order-md-2 order-1"><img src="https://i.imgur.com/DGkR4OQ.png" class="mx-auto" alt="slide"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a> </div>
+  slide end  -->
+
+
+
+<div class="container-fluid">
+  <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{{url_for('static', filename='img/imagen4.jpg')}}" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="{{url_for('static', filename='img/imagen2.jpg')}}" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="{{url_for('static', filename='img/imagen3.jpg')}}" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+
+
+<section class="section">
+  <div class="container">
+    {% for cards in elements|batch(8) %}
+
+    <div class="columns">
+      {% for column in cards %}
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="column">
+          <div class="card" style="width: 19rem;">
+
+            <img src="{{ column.imgppal }}" class="card-img-top" alt="{{ column.imgppal }}">
+            <div class="card-body">
+              <h5 class="card-title"><strong><em>CIUDAD:</em></strong> {{ column.ciudad }}</h5>
+              <p class="card-text"><strong><em>RESEÑA:</em></strong>{{ column.reseña }}</p>
+            </div>
+            <div class="container">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong><em>PAIS:</em></strong>{{ column.pais }}</li>
+                <li class="list-group-item"><strong><em>DIRECCION:</em></strong>{{ column.address }}</li>
+                <li class="list-group-item"><strong><em>NUMERO DE HABITACIONES:</em></strong>{{ column.rooms }}</li>
+                <li class="list-group-item"><strong><em>PRECIO:$</em></strong>{{ column.price }}</li>
+                <h6 text="aligncenter">
+                  <center><strong><em>UBICACIÓN:</em> </center>
+                </h6>
+                <iframe id="inlineFrameExample" title="Inline Frame Example" width="300" height="200" allowfullscreen
+                  src="{{ column.ubicacion }}">
+                </iframe>
+
+                <!-- <a class="list-group-item" href="{{ column.ubicacion }}">{{ column.ubicacion }}</a> -->
+            </div>
+            </ul>
+            <div class="card-body">
+              <center>
+                <button href="#" type="button" class="btn btn-danger">Acualizar</button>
+                <a href="/deleteData/{{column._id}}" type="button" class="btn btn-danger">Eliminar</a>
+              </center>
+            </div>
+
+          </div>
+
+
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    {% endfor %}
+  </div>
+</section>
+<a href="/registerAP" type="button" class="btn btn-danger">agregar apartamento</a>
+</body>
+
+</html>
+
+
+
+
+{% endblock %}
